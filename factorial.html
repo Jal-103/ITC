@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Factorial</title>
+    <title>Math Calculator</title>
     <script src="https://kit.fontawesome.com/31822be393.js" crossorigin="anonymous"></script>
     
     <style>
@@ -43,25 +43,24 @@
             margin-bottom: 5px;
         }
 
-        input {
+        input, select, button {
             width: 100%;
+            max-width: 450px;     
+            height: 44px;
+            margin-bottom: 12px;
             padding: 12px;
-            margin-bottom: 18px;
+            font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 6px;
-            font-size: 16px;
+            box-sizing: border-box;
         }
 
         button {
-            width: 100%;
-            padding: 14px;
             background: #007bff;
             border: none;
             color: white;
             font-size: 18px;
-            border-radius: 6px;
             cursor: pointer;
-            margin-bottom: 10px;
         }
 
         button:hover {
@@ -76,25 +75,27 @@
             border: 1px solid #ddd;
             font-size: 17px;
         }
+
+        /* Main Page Button */
+        .main-page-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #007bff;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
-
 <body>
 
-<a href="index.html" 
-   style="
-   position: fixed;
-   top: 20px;
-   left: 20px;
-   background: #007bff;
-   color: white;
-   padding: 10px 16px;
-   border-radius: 6px;
-   text-decoration: none;
-   font-weight: bold;
-   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-   ">
-   ← <i class="fa-solid fa-house"></i> Main Page </a>
+<a href="index.html" class="main-page-btn">
+   ← <i class="fa-solid fa-house"></i> Main Page
+</a>
 
 <div class="container">
     <h2>Math Calculator</h2>
@@ -109,91 +110,57 @@
         <option value="average">Average</option>
     </select>
 
+    <button id="computeBtn">Compute</button>
+
     <div class="result" id="output"></div>
 </div>
 
 <script>
-// FACTORIAL USING WHILE LOOP
-function computeFactorial() {
-    let n = parseInt(document.getElementById("num").value);
-
-    if (isNaN(n) || n < 0) {
-        document.getElementById("output").innerHTML = 
-            "<span style='color:red;'>Please enter a valid positive number.</span>";
-        return;
-    }
-
-    let fact = 1;
-    let i = 1;
-
-    while (i <= n) {
-        fact *= i;
-        i++;
-    }
-
-    document.getElementById("output").innerHTML = 
-        `<strong>Factorial of ${n}:</strong> ${fact}`;
-}
-
-// SUM USING DO-WHILE LOOP
-function computeSum() {
-    let n = parseInt(document.getElementById("num").value);
-
-    if (isNaN(n) || n < 1) {
-        document.getElementById("output").innerHTML = 
-            "<span style='color:red;'>Enter a number greater than 0.</span>";
-        return;
-    }
-
-    let sum = 0;
-    let i = 1;
-
-    do {
-        sum += i;
-        i++;
-    } while (i <= n);
-
-    document.getElementById("output").innerHTML = 
-        `<strong>Sum of first ${n} natural numbers:</strong> ${sum}`;
-}
-
-// AVERAGE USING FOR LOOP
-function computeAverage() {
-    let n = parseInt(document.getElementById("num").value);
-
-    if (isNaN(n) || n < 1) {
-        document.getElementById("output").innerHTML = 
-            "<span style='color:red;'>Enter a number greater than 0.</span>";
-        return;
-    }
-
-    let sum = 0;
-
-    for (let i = 1; i <= n; i++) {
-        sum += i;
-    }
-
-    let average = sum / n;
-
-    document.getElementById("output").innerHTML = 
-        `<strong>Average of first ${n} natural numbers:</strong> ${average.toFixed(2)}`;
-}
-    document.getElementById("num").addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        const op = document.getElementById("operation").value;
-        switch(op) {
-            case "factorial":
-                computeFactorial();
-                break;
-            case "sum":
-                computeSum();
-                break;
-            case "average":
-                computeAverage();
-                break;
+    function computeFactorial() {
+        let n = parseInt(document.getElementById("num").value);
+        if (isNaN(n) || n < 0) {
+            document.getElementById("output").innerHTML = "<span style='color:red;'>Please enter a valid positive number.</span>";
+            return;
         }
+        let fact = 1;
+        for(let i=1;i<=n;i++) fact*=i;
+        document.getElementById("output").innerHTML = `<strong>Factorial of ${n}:</strong> ${fact}`;
     }
-});
+
+    function computeSum() {
+        let n = parseInt(document.getElementById("num").value);
+        if (isNaN(n) || n < 1) {
+            document.getElementById("output").innerHTML = "<span style='color:red;'>Enter a number greater than 0.</span>";
+            return;
+        }
+        let sum=0;
+        for(let i=1;i<=n;i++) sum+=i;
+        document.getElementById("output").innerHTML = `<strong>Sum of first ${n} natural numbers:</strong> ${sum}`;
+    }
+
+    function computeAverage() {
+        let n = parseInt(document.getElementById("num").value);
+        if (isNaN(n) || n < 1) {
+            document.getElementById("output").innerHTML = "<span style='color:red;'>Enter a number greater than 0.</span>";
+            return;
+        }
+        let sum=0;
+        for(let i=1;i<=n;i++) sum+=i;
+        let avg = sum / n;
+        document.getElementById("output").innerHTML = `<strong>Average of first ${n} natural numbers:</strong> ${avg.toFixed(2)}`;
+    }
+
+    function computeSelected() {
+        let op = document.getElementById("operation").value;
+        if(op==="factorial") computeFactorial();
+        else if(op==="sum") computeSum();
+        else if(op==="average") computeAverage();
+    }
+
+    document.getElementById("computeBtn").addEventListener("click", computeSelected);
+    document.getElementById("num").addEventListener("keydown", function(e){
+        if(e.key==="Enter") computeSelected();
+    });
 </script>
 
 </body>
