@@ -102,9 +102,12 @@
     <label>Enter N:</label>
     <input type="number" id="num" placeholder="Enter a number">
 
-    <button onclick="computeFactorial()">Compute Factorial</button>
-    <button onclick="computeSum()">Compute Sum</button>
-    <button onclick="computeAverage()">Compute Average</button>
+    <label>Select Operation:</label>
+    <select id="operation">
+        <option value="factorial">Factorial</option>
+        <option value="sum">Sum</option>
+        <option value="average">Average</option>
+    </select>
 
     <div class="result" id="output"></div>
 </div>
