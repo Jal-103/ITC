@@ -6,7 +6,7 @@
     <title>Income Tax Calculator</title>
     <script src="https://kit.fontawesome.com/31822be393.js" crossorigin="anonymous"></script>
     <style>
-        input, button 
+        input, button
         {
     width: 100%;
     max-width: 450px;     
@@ -17,7 +17,7 @@
     border: 1px solid #ccc;
     border-radius: 6px;
     box-sizing: border-box;
-        }
+        } 
         body 
         {
             font-family: Arial, sans-serif;
@@ -149,7 +149,7 @@ function computeTax() {
         `Taxable Income: <strong>₱${income.toLocaleString()}</strong><br>
          Income Tax: <strong>₱${tax.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</strong>`;
 }
-    document.getElementById("income").addEventListener("keydown", function(event) 
+    document.getElementById("income").addEventListener("keydown", function(event) // if the user presses "Enter"
     {
         if (event.key === "Enter") 
         {
