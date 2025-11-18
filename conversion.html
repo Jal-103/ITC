@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conversion Program</title>
-
+    <script src="https://kit.fontawesome.com/31822be393.js" crossorigin="anonymous"></script>
     <style>
         body 
         {
@@ -89,16 +89,30 @@
 </head>
 
 <body>
-
+    
+<a href="index.html" style="
+   position: fixed;
+   top: 20px;
+   left: 20px;
+   background: #007bff;
+   color: white;
+   padding: 10px 16px;
+   border-radius: 6px;
+   text-decoration: none;
+   font-weight: bold;
+   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+   ">
+   ‚Üê <i class="fa-solid fa-house"></i> Main Page </a>
+    
 <div class="container">
     <h2>Unit Converter</h2>
 
     <label for="type">Conversion Type:</label>
     <select id="type">
-        <option value="CtoF">Celsius í Fahrenheit</option>
-        <option value="FtoC">Fahrenheit í Celsius</option>
-        <option value="MtoF">Meters í Feet</option>
-        <option value="FtoM">Feet í Meters</option>
+        <option value="CtoF">Celsius &#8593; Fahrenheit</option>
+        <option value="FtoC">Fahrenheit &#8593; Celsius</option>
+        <option value="MtoF">Meters &#8593; Feet</option>
+        <option value="FtoM">Feet &#8593; Meters</option>
     </select>
 
     <label for="value">Enter Value:</label>
@@ -128,13 +142,13 @@ function convert()
         case "CtoF":
             result = (value * 9/5) + 32;
             document.getElementById("output").innerHTML =
-                `${value}∞C = <strong>${result.toFixed(2)}∞F</strong>`;
+                `${value}¬∞C = <strong>${result.toFixed(2)}¬∞F</strong>`;
             break;
 
         case "FtoC":
             result = (value - 32) * 5/9;
             document.getElementById("output").innerHTML =
-                `${value}∞F = <strong>${result.toFixed(2)}∞C</strong>`;
+                `${value}¬∞F = <strong>${result.toFixed(2)}¬∞C</strong>`;
             break;
 
         case "MtoF":
