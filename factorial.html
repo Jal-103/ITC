@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef1f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            width: 90%;
+            max-width: 450px;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #007bff;
+            border: none;
+            color: white;
+            font-size: 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background: #005fcc;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            font-size: 17px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Math Calculator</h2>
+
+    <label>Enter N:</label>
+    <input type="number" id="num" placeholder="Enter a number">
+
+    <button onclick="computeFactorial()">Factorial (While Loop)</button>
+    <button onclick="computeSum()">Sum (Do While Loop)</button>
+    <button onclick="computeAverage()">Average (For Loop)</button>
+
+    <div class="result" id="output"></div>
+</div>
+
+<script>
+// FACTORIAL USING WHILE LOOP
+function computeFactorial() {
+    let n = parseInt(document.getElementById("num").value);
+
+    if (isNaN(n) || n < 0) {
+        document.getElementById("output").innerHTML = 
+            "<span style='color:red;'>Please enter a valid positive number.</span>";
+        return;
+    }
+
+    let fact = 1;
+    let i = 1;
+
+    while (i <= n) {
+        fact *= i;
+        i++;
+    }
+
+    document.getElementById("output").innerHTML = 
+        `<strong>Factorial of ${n}:</strong> ${fact}`;
+}
+
+// SUM USING DO-WHILE LOOP
+function computeSum() {
+    let n = parseInt(document.getElementById("num").value);
+
+    if (isNaN(n) || n < 1) {
+        document.getElementById("output").innerHTML = 
+            "<span style='color:red;'>Enter a number greater than 0.</span>";
+        return;
+    }
+
+    let sum = 0;
+    let i = 1;
+
+    do {
+        sum += i;
+        i++;
+    } while (i <= n);
+
+    document.getElementById("output").innerHTML = 
+        `<strong>Sum of first ${n} natural numbers:</strong> ${sum}`;
+}
+
+// AVERAGE USING FOR LOOP
+function computeAverage() {
+    let n = parseInt(document.getElementById("num").value);
+
+    if (isNaN(n) || n < 1) {
+        document.getElementById("output").innerHTML = 
+            "<span style='color:red;'>Enter a number greater than 0.</span>";
+        return;
+    }
+
+    let sum = 0;
+
+    for (let i = 1; i <= n; i++) {
+        sum += i;
+    }
+
+    let average = sum / n;
+
+    document.getElementById("output").innerHTML = 
+        `<strong>Average of first ${n} natural numbers:</strong> ${average.toFixed(2)}`;
+}
+</script>
+
+</body>
+</html>
