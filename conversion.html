@@ -127,10 +127,7 @@
 </div>
 
 <script>
-    
-    document.getElementById("converterForm").addEventListener("submit", function(e) {
-    e.preventDefault(); // prevent page reload
-    convertValue();     // replace with your conversion function
+
 function convert()  
     {
     let type = document.getElementById("type").value;
@@ -170,6 +167,9 @@ function convert()
                 `${value} ft = <strong>${result.toFixed(2)} m</strong>`;
             break;
     }
+    document.getElementById("converterForm").addEventListener("submit", function(e) {
+    e.preventDefault(); 
+    convertValue();     
 }
 </script>
 
