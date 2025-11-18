@@ -181,20 +181,13 @@ function convert()
             break;
     }
 }
-    
-    const inputs = document.querySelectorAll("#celsius, #fahrenheit, #meters, #feet");
-
-inputs.forEach(input => {
-    input.addEventListener("keydown", function(event) {
-        if(event.key === "Enter") {
-            switch(input.id) {
-                case "celsius": cToF(); break;
-                case "fahrenheit": fToC(); break;
-                case "meters": mToF(); break;
-                case "feet": fToM(); break;
-            }
-        }
-    });
+    document.addEventListener("keydown", function(event) {
+    if(event.key === "Enter") {
+        if(document.getElementById("celsius").value) cToF();
+        else if(document.getElementById("fahrenheit").value) fToC();
+        else if(document.getElementById("meters").value) mToF();
+        else if(document.getElementById("feet").value) fToM();
+    }
 });
 </script>
 
