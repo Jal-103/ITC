@@ -181,12 +181,9 @@ function convert()
             break;
     }
 }
-    document.addEventListener("keydown", function(event) {
-    if(event.key === "Enter") {
-        if(document.getElementById("celsius").value) cToF();
-        else if(document.getElementById("fahrenheit").value) fToC();
-        else if(document.getElementById("meters").value) mToF();
-        else if(document.getElementById("feet").value) fToM();
+    document.getElementById("value").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        convert();
     }
 });
 </script>
